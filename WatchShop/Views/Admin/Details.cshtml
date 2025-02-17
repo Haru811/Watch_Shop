@@ -1,0 +1,93 @@
+﻿@model WatchShop.DBContext.product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.productname)
+            </th>
+
+
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.productprice)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.newprod)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.topprod)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.discountprod)
+            </th>
+
+
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Brand.BrandName)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.category.categories)
+            </th>
+            
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.productname)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.productprice)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.newprod)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.topprod)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.discountprod)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Brand.BrandName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.category.categories)
+            </td>
+        </tr>
+
+
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </table>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<WatchShop.Models.sanphamModel1>
+
+@foreach (var item in Model)
+{
+    <!-- product -->
+    <div class="product">
+        <a href="/dong-ho-deo-tay/@item.alias@item.id">
+            <div class="product-img">
+                <img src="@item.hinhanhnen" alt="@item.productname">
+
+            </div>
+            <div class="product-body">
+                <p class="product-category">Category</p>
+                <h3 class="product-name"><a href="#">@item.productname</a></h3>
+                @if (item.newprice.HasValue == true)
+                {
+                    <h4 class="product-price">@item.newprice.Value.ToString("#,##0VNĐ")</h4><del class="product-old-price">@item.productprice.Value.ToString("#,##0VNĐ")</del>
+                }
+                else
+                {
+                    <h4 class="product-price">
+                        @item.productprice.Value.ToString("#,##0VNĐ")
+                    </h4>
+                }
+                <div class="product-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <div class="product-btns">
+                  
+                    <button class="quick-view">
+                        <i class="fa fa-eye"></i><span class="tooltipp">
+                                                     <div id="myDIV">
+                                                         <p>Loại dây: @item.lday</p>
+                                                         <p>Mặt kính: @item.matkinh</p>
+                                                         <p>Chống nước: @item.chongnuoc</p>
+                                                         <p>@item.thongtinphu</p>
+                                                         <p>@item.thongtinphu1</p>
+                                                         <p>@item.thongtinphu2</p>
+                                                         <p>@item.thongtinphu3</p>
+                                                     </div>
+                        </span>
+                    </button>
+                </div>
+            </div>
+           
+        </a>
+    </div>
+    <!-- /product -->
+}
+
+

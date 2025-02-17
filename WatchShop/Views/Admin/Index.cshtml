@@ -1,0 +1,121 @@
+﻿@model IEnumerable<WatchShop.DBContext.product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Thống kê</h2>
+<p>Số lượng sản phẩm:@Model.Count()</p>
+
+<div>
+    <div class="col-sm-3">
+        <select name="newprod">
+            <option value="">---Choose---</option>
+            <option value="">---New---</option>
+            <option value="">---Not New---</option>
+        </select>
+        <button type="submit">Lọc</button>
+    </div>
+</div>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productprice)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.newprod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.topprod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discountprod)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Brand.BrandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category.categories)
+            </th>
+            
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productprice)
+            </td>
+
+
+            <td>
+                @if (item.newprod == true)
+                {
+                    <span class="btn btn-success">@Html.Action("checkvalue", "Admin", new { val = item.newprod })</span>
+                }
+                else
+                {
+                    <span class="btn btn-danger">@Html.Action("checkvalue", "Admin", new { val = item.newprod })</span>
+                }
+            </td>
+            <td>
+                @if (item.topprod == true)
+                {
+                    <span class="btn btn-success">@Html.Action("checkvalue", "Admin", new { val = item.topprod })</span>
+                }
+                else
+                {
+                    <span class="btn btn-danger">@Html.Action("checkvalue", "Admin", new { val = item.topprod })</span>
+                }
+            </td>
+            <td>
+                @if (item.discountprod == true)
+                {
+                    <span class="btn btn-success">@Html.Action("checkvalue", "Admin", new { val = item.discountprod })</span>
+                }
+                else
+                {
+                    <span class="btn btn-danger">@Html.Action("checkvalue", "Admin", new { val = item.discountprod })</span>
+                }
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.BrandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category.categories)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.id })
+
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

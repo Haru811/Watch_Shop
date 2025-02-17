@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5e02fffaf0f45c7b5007016eb7305b7" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="WatchWebModel.Brand" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchWebModel.category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchWebModel.product" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WatchWebModel.TOPDANHMUC" Width="1.5" PointX="5" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="WatchWebModel.fk_product_brandid" ManuallyRouted="false" />
+        <AssociationConnector Association="WatchWebModel.fk_product_categoryid" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WatchWebModel.user" Width="1.5" PointX="6.625" PointY="1.25" />
+        <EntityTypeShape EntityType="WatchWebModel.role" Width="1.5" PointX="8.25" PointY="1.25" />
+        <AssociationConnector Association="WatchWebModel.FK__role__Userid__4316F928" />
+        <EntityTypeShape EntityType="WatchWebModel.sysdiagram" Width="1.5" PointX="10.375" PointY="1.25" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

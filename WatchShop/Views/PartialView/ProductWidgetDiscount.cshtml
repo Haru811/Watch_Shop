@@ -1,0 +1,28 @@
+﻿
+@model IEnumerable<WatchShop.Models.sanphamModel1>
+
+
+@foreach (var item in Model)
+{
+    <!-- product widget -->
+    <div class="product-widget">
+        <div class="product-img">
+            <img src="@item.hinhanhnen" alt="@item.productname">
+        </div>
+        <div class="product-body">
+            <p class="product-category">Category</p>
+            <h3 class="product-name"><a href="#">@item.productname</a></h3>
+            @if (item.newprice.HasValue == true)
+            {
+                <h4 class="product-price">@item.newprice.Value.ToString("#,##0VNĐ")</h4><del class="product-old-price">@item.productprice.Value.ToString("#,##0VNĐ")</del>
+            }
+            else
+            {
+                <h4 class="product-price">
+                    @item.productprice.Value.ToString("#,##0VNĐ")
+                </h4>
+            }
+        </div>
+    </div>
+    <!-- /product widget -->
+}

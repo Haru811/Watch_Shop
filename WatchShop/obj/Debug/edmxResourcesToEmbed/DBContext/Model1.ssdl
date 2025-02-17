@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANHANGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbdanhmuc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tendanhmuc" Type="nvarchar" MaxLength="50" />
+    <Property Name="alias" Type="varchar" MaxLength="50" />
+    <Property Name="tieudeseo" Type="nvarchar" MaxLength="50" />
+    <Property Name="mota" Type="nvarchar" MaxLength="100" />
+    <Property Name="tukhoa" Type="nvarchar" MaxLength="100" />
+    <Property Name="trangthai" Type="bit" />
+    <Property Name="hinhanh" Type="varchar" MaxLength="150" />
+    <Property Name="top" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbsanpham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tensanpham" Type="nvarchar" MaxLength="100" />
+    <Property Name="giaban" Type="int" />
+    <Property Name="giakm" Type="int" />
+    <Property Name="hinhanh" Type="varchar" MaxLength="100" />
+    <Property Name="alias" Type="varchar" MaxLength="100" />
+    <Property Name="tieudeseo" Type="nvarchar" MaxLength="50" />
+    <Property Name="mota" Type="nvarchar" MaxLength="50" />
+    <Property Name="spmoi" Type="bit" />
+    <Property Name="spbanchay" Type="bit" />
+    <Property Name="spgiamgia" Type="bit" />
+    <Property Name="trangthai" Type="bit" />
+    <Property Name="danhmucid" Type="int" />
+  </EntityType>
+  <Association Name="FK_tbsanpham_tbdanhmuc">
+    <End Role="tbdanhmuc" Type="Self.tbdanhmuc" Multiplicity="0..1" />
+    <End Role="tbsanpham" Type="Self.tbsanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbdanhmuc">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbsanpham">
+        <PropertyRef Name="danhmucid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BANHANGModelStoreContainer">
+    <EntitySet Name="tbdanhmuc" EntityType="Self.tbdanhmuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbsanpham" EntityType="Self.tbsanpham" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbsanpham_tbdanhmuc" Association="Self.FK_tbsanpham_tbdanhmuc">
+      <End Role="tbdanhmuc" EntitySet="tbdanhmuc" />
+      <End Role="tbsanpham" EntitySet="tbsanpham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

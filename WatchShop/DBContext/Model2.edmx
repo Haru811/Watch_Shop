@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WatchWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="int" Nullable="false" />
+          <Property Name="categories" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productid" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="productname" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="trangthai" Type="bit" />
+          <Property Name="tieude" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="productprice" Type="int" />
+          <Property Name="newprice" Type="int" />
+          <Property Name="alias" Type="nvarchar" MaxLength="150" />
+          <Property Name="newprod" Type="bit" />
+          <Property Name="topprod" Type="bit" />
+          <Property Name="discountprod" Type="bit" />
+          <Property Name="brandid" Type="int" Nullable="false" />
+          <Property Name="categoryid" Type="int" Nullable="false" />
+          <Property Name="lday" Type="nvarchar" MaxLength="100" />
+          <Property Name="matkinh" Type="nvarchar" MaxLength="100" />
+          <Property Name="chongnuoc" Type="nvarchar" MaxLength="100" />
+          <Property Name="thongtinphu" Type="nvarchar" MaxLength="300" />
+          <Property Name="thongtinphu1" Type="nvarchar" MaxLength="300" />
+          <Property Name="thongtinphu2" Type="nvarchar" MaxLength="300" />
+          <Property Name="thongtinphu3" Type="nvarchar" MaxLength="300" />
+          <Property Name="mota" Type="nvarchar(max)" />
+          <Property Name="hinhanhnen" Type="varchar(max)" Nullable="false" />
+          <Property Name="hinhanh1" Type="varchar(max)" />
+          <Property Name="hinhanh2" Type="varchar(max)" />
+          <Property Name="hinhanh3" Type="varchar(max)" />
+          <Property Name="hinhanh4" Type="varchar(max)" />
+          <Property Name="hinhanh5" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Userid" Type="int" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TOPDANHMUC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tendanhmuc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="alias" Type="varchar" MaxLength="150" />
+          <Property Name="hinhanh" Type="varchar(max)" Nullable="false" />
+          <Property Name="topp" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__role__Userid__4316F928">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="role" Type="Self.role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="role">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_product_brandid">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="brandid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_product_categoryid">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="categoryID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WatchWebModelStoreContainer">
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOPDANHMUC" EntityType="Self.TOPDANHMUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__role__Userid__4316F928" Association="Self.FK__role__Userid__4316F928">
+            <End Role="user" EntitySet="user" />
+            <End Role="role" EntitySet="role" />
+          </AssociationSet>
+          <AssociationSet Name="fk_product_brandid" Association="Self.fk_product_brandid">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_product_categoryid" Association="Self.fk_product_categoryid">
+            <End Role="category" EntitySet="category" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WatchWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="products" Relationship="Self.fk_product_brandid" FromRole="Brands" ToRole="product" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="Int32" Nullable="false" />
+          <Property Name="categories" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="products" Relationship="Self.fk_product_categoryid" FromRole="category" ToRole="product" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productid" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="productname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="trangthai" Type="Boolean" />
+          <Property Name="tieude" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="productprice" Type="Int32" />
+          <Property Name="newprice" Type="Int32" />
+          <Property Name="alias" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="newprod" Type="Boolean" />
+          <Property Name="topprod" Type="Boolean" />
+          <Property Name="discountprod" Type="Boolean" />
+          <Property Name="brandid" Type="Int32" Nullable="false" />
+          <Property Name="categoryid" Type="Int32" Nullable="false" />
+          <Property Name="lday" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="matkinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="chongnuoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="thongtinphu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="thongtinphu1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="thongtinphu2" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="thongtinphu3" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hinhanhnen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hinhanh1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hinhanh2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hinhanh3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hinhanh4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hinhanh5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.fk_product_brandid" FromRole="product" ToRole="Brands" />
+          <NavigationProperty Name="category" Relationship="Self.fk_product_categoryid" FromRole="product" ToRole="category" />
+        </EntityType>
+        <EntityType Name="TOPDANHMUC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tendanhmuc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alias" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="hinhanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="topp" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_product_brandid">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="brandid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_product_categoryid">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="categoryID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WatchWebEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="TOPDANHMUCs" EntityType="Self.TOPDANHMUC" />
+          <AssociationSet Name="fk_product_brandid" Association="Self.fk_product_brandid">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="fk_product_categoryid" Association="Self.fk_product_categoryid">
+            <End Role="category" EntitySet="categories" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <EntitySet Name="users" EntityType="WatchWebModel.user" />
+          <EntitySet Name="roles" EntityType="WatchWebModel.role" />
+          <AssociationSet Name="FK__role__Userid__4316F928" Association="WatchWebModel.FK__role__Userid__4316F928">
+            <End Role="user" EntitySet="users" />
+            <End Role="role" EntitySet="roles" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="WatchWebModel.sysdiagram" />
+        </EntityContainer>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="roles" Relationship="WatchWebModel.FK__role__Userid__4316F928" FromRole="user" ToRole="role" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Userid" Type="Int32" Nullable="false" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user" Relationship="WatchWebModel.FK__role__Userid__4316F928" FromRole="role" ToRole="user" />
+        </EntityType>
+        <Association Name="FK__role__Userid__4316F928">
+          <End Type="WatchWebModel.user" Role="user" Multiplicity="1" />
+          <End Type="WatchWebModel.role" Role="role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="role">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WatchWebModelStoreContainer" CdmEntityContainer="WatchWebEntities1">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="WatchWebModel.Brand">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="WatchWebModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="categories" ColumnName="categories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="WatchWebModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+                <ScalarProperty Name="tieude" ColumnName="tieude" />
+                <ScalarProperty Name="productprice" ColumnName="productprice" />
+                <ScalarProperty Name="newprice" ColumnName="newprice" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="newprod" ColumnName="newprod" />
+                <ScalarProperty Name="topprod" ColumnName="topprod" />
+                <ScalarProperty Name="discountprod" ColumnName="discountprod" />
+                <ScalarProperty Name="brandid" ColumnName="brandid" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="lday" ColumnName="lday" />
+                <ScalarProperty Name="matkinh" ColumnName="matkinh" />
+                <ScalarProperty Name="chongnuoc" ColumnName="chongnuoc" />
+                <ScalarProperty Name="thongtinphu" ColumnName="thongtinphu" />
+                <ScalarProperty Name="thongtinphu1" ColumnName="thongtinphu1" />
+                <ScalarProperty Name="thongtinphu2" ColumnName="thongtinphu2" />
+                <ScalarProperty Name="thongtinphu3" ColumnName="thongtinphu3" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="hinhanhnen" ColumnName="hinhanhnen" />
+                <ScalarProperty Name="hinhanh1" ColumnName="hinhanh1" />
+                <ScalarProperty Name="hinhanh2" ColumnName="hinhanh2" />
+                <ScalarProperty Name="hinhanh3" ColumnName="hinhanh3" />
+                <ScalarProperty Name="hinhanh4" ColumnName="hinhanh4" />
+                <ScalarProperty Name="hinhanh5" ColumnName="hinhanh5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOPDANHMUCs">
+            <EntityTypeMapping TypeName="WatchWebModel.TOPDANHMUC">
+              <MappingFragment StoreEntitySet="TOPDANHMUC">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tendanhmuc" ColumnName="tendanhmuc" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+                <ScalarProperty Name="topp" ColumnName="topp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="WatchWebModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="WatchWebModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WatchWebModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

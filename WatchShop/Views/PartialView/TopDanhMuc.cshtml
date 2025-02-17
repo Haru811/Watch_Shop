@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WatchShop.Models.danhmucModel1>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-4 col-xs-6">
+
+        <a href="/dong-ho-deo-tay/@item.alias">
+
+            <div class="shop">
+
+                <div class="shop-img">
+                    <img src="@item.hinhanh">
+
+                </div>
+                <div class="shop-body">
+                    <h3>@item.tendanhmuc</h3>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+}
+
+
+

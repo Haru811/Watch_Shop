@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANHANGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbdanhmuc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tendanhmuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tieudeseo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mota" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="tukhoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="trangthai" Type="Boolean" />
+    <Property Name="hinhanh" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="top" Type="Boolean" />
+    <NavigationProperty Name="tbsanphams" Relationship="Self.FK_tbsanpham_tbdanhmuc" FromRole="tbdanhmuc" ToRole="tbsanpham" />
+  </EntityType>
+  <EntityType Name="tbsanpham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tensanpham" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="giaban" Type="Int32" />
+    <Property Name="giakm" Type="Int32" />
+    <Property Name="hinhanh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="alias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tieudeseo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="spmoi" Type="Boolean" />
+    <Property Name="spbanchay" Type="Boolean" />
+    <Property Name="trangthai" Type="Boolean" />
+    <Property Name="danhmucid" Type="Int32" />
+    <NavigationProperty Name="tbdanhmuc" Relationship="Self.FK_tbsanpham_tbdanhmuc" FromRole="tbsanpham" ToRole="tbdanhmuc" />
+    <Property Name="spgiamgia" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_tbsanpham_tbdanhmuc">
+    <End Role="tbdanhmuc" Type="Self.tbdanhmuc" Multiplicity="0..1" />
+    <End Role="tbsanpham" Type="Self.tbsanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbdanhmuc">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbsanpham">
+        <PropertyRef Name="danhmucid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BANHANGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbdanhmucs" EntityType="Self.tbdanhmuc" />
+    <EntitySet Name="tbsanphams" EntityType="Self.tbsanpham" />
+    <AssociationSet Name="FK_tbsanpham_tbdanhmuc" Association="Self.FK_tbsanpham_tbdanhmuc">
+      <End Role="tbdanhmuc" EntitySet="tbdanhmucs" />
+      <End Role="tbsanpham" EntitySet="tbsanphams" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BANHANGModelStoreContainer" CdmEntityContainer="BANHANGEntities">
+    <EntitySetMapping Name="tbdanhmucs">
+      <EntityTypeMapping TypeName="BANHANGModel.tbdanhmuc">
+        <MappingFragment StoreEntitySet="tbdanhmuc">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tendanhmuc" ColumnName="tendanhmuc" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="tieudeseo" ColumnName="tieudeseo" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="tukhoa" ColumnName="tukhoa" />
+          <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+          <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+          <ScalarProperty Name="top" ColumnName="top" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbsanphams">
+      <EntityTypeMapping TypeName="BANHANGModel.tbsanpham">
+        <MappingFragment StoreEntitySet="tbsanpham">
+          <ScalarProperty Name="spgiamgia" ColumnName="spgiamgia" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
+          <ScalarProperty Name="giaban" ColumnName="giaban" />
+          <ScalarProperty Name="giakm" ColumnName="giakm" />
+          <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="tieudeseo" ColumnName="tieudeseo" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="spmoi" ColumnName="spmoi" />
+          <ScalarProperty Name="spbanchay" ColumnName="spbanchay" />
+          <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+          <ScalarProperty Name="danhmucid" ColumnName="danhmucid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

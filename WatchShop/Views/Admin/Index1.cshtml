@@ -1,0 +1,197 @@
+﻿@model IEnumerable<WatchShop.Models.sanphamModel1>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index1</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trangthai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tieude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.newprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.alias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.newprod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.topprod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discountprod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brandid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.matkinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.chongnuoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thongtinphu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thongtinphu1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thongtinphu2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.thongtinphu3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhanhnen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhanh1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhanh2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhanh3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhanh4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hinhanh5)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trangthai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tieude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.newprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.alias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.newprod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.topprod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discountprod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brandid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.matkinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.chongnuoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thongtinphu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thongtinphu1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thongtinphu2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thongtinphu3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhanhnen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhanh1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhanh2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhanh3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhanh4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhanh5)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
